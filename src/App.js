@@ -1,13 +1,5 @@
 import React, { Component } from "react";
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-// BrowserRouter
-// To add the ability to add routing functionality
-// Switch
-// Checks provided paths and stops checking all as soon as it finds a match
-// Route
-// Renders components based on the URL
-
 // Home page
 import Navigation from "./Components/Nav/Nav";
 import Footer from "./Components/Footer/Footer";
@@ -18,26 +10,44 @@ import Iphone from "./Pages/Iphone/iphone";
 import Mac from "./Pages/Mac/Mac";
 import Four04 from "./Pages/Four04/Four04";
 import Productpage from "./Pages/Productpage/Productpage";
+import Ipad from "./Pages/Ipad/Ipad";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 // import general css
 import "./css/styles.css";
 
+// my YoutubeVideos component
+import YoutubeVideos from "./Components/YoutubeVideos/YoutubeVideos";
+
+import { Route, Routes } from "react-router-dom";
+
+// Route
+// Renders components based on the URL
+// functional component
 function App() {
-  return (
-    <Router>
-      <div>
-        <Navigation />
-        <Switch>
-          <Route path="/" exact component={Main} />
-          <Route path="/mac" exact component={Mac} />
-          <Route path="/iphone" exact component={Iphone} />
-          <Route path="/iphone/:pid" exact component={Productpage} />
-          <Route path="/" component={Four04} />
-        </Switch>
-        <Footer />
-      </div>
-    </Router>
-  );
+    return (
+        <>
+            <Navigation />
+
+            <Routes>
+                <Route path="/" element={<Main />} />
+                <Route path="/iphone" element={<Iphone />} />
+                <Route path="/Mac" element={<Mac />} />
+                <Route path="/ipad" element={<Ipad />} />
+                {/* <Route path="/Productpage" element={<Productpage />} /> */}
+                <Route path="*" element={<Four04 />} />
+                {/* <main />
+        <Iphone />
+        <Mac />
+        <Four04 />
+        <Productpage /> */}
+            </Routes>
+
+            <Footer />
+
+            {/* <YoutubeVideos /> */}
+        </>
+    );
 }
 
 export default App;
